@@ -1,0 +1,35 @@
+﻿<Window x:Class="MVVM.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MVVM.Views"
+        mc:Ignorable="d"
+        Title="MainView" Height="450" Width="800">
+    <StackPanel>
+        <ComboBox ItemsSource="{Binding Cars}" DisplayMemberPath="Make" SelectionChanged="ComboBox_SelectionChanged"
+                  x:Name="ListOfCars" Margin="20" Width="150" Loaded="ListOfCars_Loaded">
+            
+        </ComboBox>
+
+
+        <TextBlock Text="Make"  HorizontalAlignment="Center"/>
+        <TextBox x:Name="SelectedCarMakeTextBox" Text="{Binding SelectedCar.Make,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+        
+        <TextBlock Text="Model" HorizontalAlignment="Center"/>
+        <TextBox x:Name="SelectedCarModelTextBox" Text="{Binding SelectedCar.Model,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+        
+        <TextBlock Text="Year" HorizontalAlignment="Center"/>
+        <TextBox x:Name="SelectedCarYearTextBox" Text="{Binding SelectedCar.Year,UpdateSourceTrigger=PropertyChanged}" Width="200"/>
+
+        <Grid  Margin="20">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" HorizontalAlignment="Center" Style="{StaticResource ButtonStyle}" Content="Show" Command="{Binding ShowCommand}"/>
+            <Button Grid.Column="1" HorizontalAlignment="Center" Style="{StaticResource ButtonStyle}" Content="Delete" Command="{Binding DeleteCommand}"/>
+        </Grid>
+    </StackPanel>
+</Window>
